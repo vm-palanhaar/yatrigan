@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:yatrigan/controller/auth/auth_ctrl.dart';
+import 'package:yatrigan/view/init/init_view.dart';
 import 'package:yatrigan/view/init/splash_screen.dart';
+import 'package:yatrigan/view/main/home_screen_view.dart';
 
 void main() {
   runApp(const Yatrigan());
@@ -22,6 +24,8 @@ class Yatrigan extends StatelessWidget {
         initialRoute: SplashScreen.id,
         routes: {
           SplashScreen.id: (_) => const SplashScreen(),
+          InitView.id: (_) => const InitView(),
+          HomeScreenView.id: (_) => const HomeScreenView(),
         },
       ),
     );

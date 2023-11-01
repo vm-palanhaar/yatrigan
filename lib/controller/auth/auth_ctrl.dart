@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:yatrigan/controller/auth/auth_ctrl_api.dart';
 import 'package:yatrigan/controller/auth/auth_ctrl_mdl.dart';
+import 'package:yatrigan/view/init/init_view.dart';
+import 'package:yatrigan/view/main/home_screen_view.dart';
 
 class AuthCtrl extends AuthCtrlMdl {
   BuildContext? context;
+  final AuthCtrlApi _authApi = AuthCtrlApi();
 
   AuthCtrl({this.context});
 
@@ -59,16 +63,15 @@ class AuthCtrl extends AuthCtrlMdl {
     this.context = context;
     String? skip = await readKey(key: AppKey.skip.key);
     if (skip != null) {
-      appKeys[AppKey.skip.key] = skip;
       if (skip.contains('1')) {
-        userLoggedIn = -1;
-      } else {
         userLoggedIn = 0;
+      } else if (skip.contains('0')) {
+        userLoggedIn = -1;
         await getUserLoggedIn();
       }
       return;
     }
-    await writeKey(key: AppKey.skip.key, value: '1');
+    await writeKey(key: AppKey.skip.key, value: '0');
     userLoggedIn = -1;
   }
 
@@ -79,39 +82,37 @@ class AuthCtrl extends AuthCtrlMdl {
       await getUserLoggedInApi();
       return;
     }
-    userLoggedIn = 0;
+    userLoggedIn = -1;
   }
 
   Future<void> getUserLoggedInApi() async {
     if (appKeys[AppKey.token.key] != null) {
-      /*String res = await _authApi.getUserLoggedInValidApi(
+      String res = await _authApi.getUserLoggedInValidApi(
         context: context!,
         token: appKeys[AppKey.token.key]!,
         showError: true,
       );
       if (res.isNotEmpty) {
         userLoggedIn = 1;
+        await writeKey(key: AppKey.skip.key, value: '0');
         await writeKey(key: AppKey.token.key, value: res);
         await readAllKeys();
         return;
-      }*/
+      }
     }
-    userLoggedIn = 0;
+    userLoggedIn = -1;
   }
 
   void navigateFromSplashScreen() {
     switch (userLoggedIn) {
       case -1:
-        //TODO: main view
-        Navigator.pushReplacementNamed(context!, 'routeName');
+        Navigator.pushReplacementNamed(context!, InitView.id);
         break;
       case 0:
-        //TODO: init view
-        Navigator.pushReplacementNamed(context!, 'routeName');
+        Navigator.pushReplacementNamed(context!, HomeScreenView.id);
         break;
       case 1:
-        //TODO: main view
-        Navigator.pushReplacementNamed(context!, 'routeName');
+        Navigator.pushReplacementNamed(context!, HomeScreenView.id);
         break;
     }
   }

@@ -10,7 +10,6 @@ class AuthCtrlMdl extends ChangeNotifier {
       );
 
   final List<String> _appKeys = [
-    AppKey.skip.key,
     AppKey.username.key,
     AppKey.token.key,
   ];
@@ -20,15 +19,19 @@ class AuthCtrlMdl extends ChangeNotifier {
   Map<String, String> appKeys = {};
 
   /*
-  -1 - skip
-  0 - not logged in
-  1 - success logged in
+  -1 - not logged in -> navigate to init screen
+  0 - skip user login -> navigate to main screen
+  1 - success logged in -> navigate to main screen
    */
   int userLoggedIn = -1;
 }
 
 enum AppKey {
-  // user preferred not to login and proceed to app
+  /*
+  user preferred not to login and proceed to app
+  0 - no -> navigate to init screen and check for token
+  1 - yes -> navigate to main screen
+   */
   skip(key: 'ipytr_user_skip'),
   username(key: 'ipytr_user_username'),
   token(key: 'ipytr_user_token');
