@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:yatrigan/view/init/init_view.dart';
+import 'package:yatrigan/view/main/ir/dashboard/dashboard_screen.dart';
+import 'package:yatrigan/view/main/ir/help/help_screen.dart';
+import 'package:yatrigan/view/main/ir/train/train_screen.dart';
+import 'package:yatrigan/view/main/ir/wallet/wallet_screen.dart';
 import 'package:yatrigan/view/main/util/bottom_nav_bar_util.dart';
 import 'package:yatrigan/view/main/util/internet_screen.dart';
 
@@ -37,11 +41,11 @@ class _HomeScreenViewState extends State<HomeScreenView> {
           return Scaffold(
             body: TabBarView(
               controller: tabController,
-              children: <Widget>[
-                Container(),
-                Container(),
-                Container(),
-                Container(),
+              children: const <Widget>[
+                DashboardScreen(),
+                TrainScreen(),
+                WalletScreen(),
+                HelpScreen(),
               ],
             ),
             bottomNavigationBar: BottomNavigationBar(
@@ -66,8 +70,8 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                   label: BottomNavBarUtil.wallet.label,
                 ),
                 BottomNavigationBarItem(
-                  icon: BottomNavBarUtil.tour.icon,
-                  label: BottomNavBarUtil.tour.label,
+                  icon: BottomNavBarUtil.help.icon,
+                  label: BottomNavBarUtil.help.label,
                 ),
               ],
             ),

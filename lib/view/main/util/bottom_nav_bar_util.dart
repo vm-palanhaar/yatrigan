@@ -13,9 +13,9 @@ enum BottomNavBarUtil {
     icon: Icon(Icons.wallet_travel),
     label: 'Wallet',
   ),
-  tour(
-    icon: Icon(Icons.tour_outlined),
-    label: 'Tourism',
+  help(
+    icon: Icon(Icons.help_outline),
+    label: 'Help',
   );
 
   const BottomNavBarUtil({
