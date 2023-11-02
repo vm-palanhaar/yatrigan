@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:yatrigan/view/util/margins.dart';
 
 class TextFormFieldWidget extends StatelessWidget {
-  final Widget prefixWidget;
+  final Widget? prefixWidget;
   final TextInputType keyboardType;
   final String labelText;
   final Function? validator;
@@ -51,6 +51,9 @@ class TextFormFieldWidget extends StatelessWidget {
           labelText: labelText,
           contentPadding: EdgeInsets.symmetric(
             vertical: MediaQuery.of(context).size.height * 0.01,
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0),
           ),
         ),
       ),

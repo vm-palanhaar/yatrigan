@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:yatrigan/view/init/init_view.dart';
 import 'package:yatrigan/view/main/ir/dashboard/dashboard_screen.dart';
 import 'package:yatrigan/view/main/ir/help/help_screen.dart';
