@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:yatrigan/controller/main/ir/ir_ctrl.dart';
+import 'package:yatrigan/view/main/ir/station/screens/shop/ir_shop_list_tab.dart';
 import 'package:yatrigan/view/util/app_bar.dart';
 
 class IrStationScreen extends StatelessWidget {
@@ -10,9 +11,9 @@ class IrStationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String stationName =
-        Provider.of<IrCtrl>(context, listen: false).railStationName;
+        Provider.of<IrCtrl>(context, listen: false).stationName;
     String stationCode =
-        Provider.of<IrCtrl>(context, listen: false).railStationCode;
+        Provider.of<IrCtrl>(context, listen: false).stationCode;
     return DefaultTabController(
       initialIndex: 0,
       length: 1,
@@ -27,9 +28,9 @@ class IrStationScreen extends StatelessWidget {
             ),
           ],
         ),
-        body: TabBarView(
+        body: const TabBarView(
           children: <Widget>[
-            Container(),
+            IrShopListTab(),
           ],
         ),
       ),

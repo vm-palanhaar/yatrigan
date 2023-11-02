@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yatrigan/view/main/ir/widgets/ir_station_search_widget.dart';
+import 'package:yatrigan/view/main/ir/station/widgets/ir_station_search_widget.dart';
 import 'package:yatrigan/view/widgets/fields/ac_textformfield_widget.dart';
 import 'package:yatrigan/view/widgets/fields/textformfield_widget.dart';
 import 'package:yatrigan/view/widgets/text_widget.dart';

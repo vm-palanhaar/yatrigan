@@ -17,4 +17,18 @@ class IrCtrl extends IrCtrlMdl {
       notifyListeners();
     }
   }
+
+  Future<void> getStationShopListApi({
+    required BuildContext context,
+  }) async {
+    if (stationCode.isNotEmpty) {
+      shops = null;
+      shops = await _api.getShopListApi(
+        context: context,
+        showError: true,
+        stationCode: stationCode,
+      );
+      notifyListeners();
+    }
+  }
 }
