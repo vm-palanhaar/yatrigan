@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:yatrigan/controller/main/ir/ir_ctrl.dart';
-import 'package:yatrigan/view/main/ir/station/screens/shop/ir_shop_list_tab.dart';
+import 'package:yatrigan/view/main/ir/station/screens/ir_shop_list_tab.dart';
 import 'package:yatrigan/view/util/app_bar.dart';
 
 class IrStationScreen extends StatelessWidget {

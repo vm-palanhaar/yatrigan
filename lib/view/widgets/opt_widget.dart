@@ -24,10 +24,13 @@ class OptWidget extends StatelessWidget {
               icon,
               size: MediaQuery.of(context).size.height * 0.06,
             ),
-            TextWidget(
-              text: title,
-              fontWeight: FontWeight.bold,
-              fontSize: MediaQuery.of(context).size.height * 0.02,
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextWidget(
+                text: title,
+                fontWeight: FontWeight.bold,
+                fontSize: MediaQuery.of(context).size.height * 0.02,
+              ),
             ),
           ],
         ),
