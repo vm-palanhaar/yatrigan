@@ -1,47 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:yatrigan/controller/main/ir/ir_ctrl.dart';
-import 'package:yatrigan/view/main/ir/station/screens/ir_station_screen.dart';
 import 'package:yatrigan/view/widgets/fields/ac_textformfield_widget.dart';
 
-class IrStationSearchWidget extends StatefulWidget {
+class IrTrainSearchWidget extends StatefulWidget {
   final Function onSubmitted;
   final String title;
-  const IrStationSearchWidget({
+  const IrTrainSearchWidget({
     super.key,
     required this.onSubmitted,
     required this.title,
   });
 
   @override
-  State<IrStationSearchWidget> createState() => _IrStationSearchWidgetState();
+  State<IrTrainSearchWidget> createState() => _IrTrainSearchWidgetState();
 }
 
-class _IrStationSearchWidgetState extends State<IrStationSearchWidget> {
+class _IrTrainSearchWidgetState extends State<IrTrainSearchWidget> {
   late IrCtrl ctrl;
 
   @override
   void initState() {
     ctrl = Provider.of<IrCtrl>(context, listen: false);
-    getStationList();
+    getTrainList();
     super.initState();
   }
 
-  Future<void> getStationList() async {
-    await ctrl.getStationListApi(context: context);
+  Future<void> getTrainList() async {
+    await ctrl.getTrainListApi(context: context);
     setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return AcTextFormFieldWidget(
-      prefixWidget: const Icon(Icons.place_outlined),
+      prefixWidget: const Icon(Icons.train_outlined),
       labelText: widget.title,
-      list: ctrl.stationList!.stations,
+      list: ctrl.trainList!.trains,
       onSelect: (String selection) async {
-        ctrl.stationName = selection.split('-')[0].trim();
-        ctrl.stationCode = selection.split('-')[1].trim();
-        Navigator.pushNamed(context, IrStationScreen.id);
+        ctrl.trainNo = selection.split('-')[1].trim();
+        ctrl.trainName = selection.split('-')[0].trim();
       },
     );
   }
