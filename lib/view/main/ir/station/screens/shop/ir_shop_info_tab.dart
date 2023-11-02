@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:yatrigan/controller/main/ir/ir_ctrl.dart';
 import 'package:yatrigan/view/util/margins.dart';
 import 'package:yatrigan/view/widgets/ctext_error_widget.dart';
@@ -58,6 +59,14 @@ class _IrShopInfoTabState extends State<IrShopInfoTab> {
             leading: const Icon(Icons.contact_phone_outlined),
             title: Text(ctrl.shopInfo!.shop!.contactNo),
             subtitle: const Text('Contact Number'),
+            trailing: const Icon(Icons.call),
+            onTap: () async {
+              final Uri launchUri = Uri(
+                scheme: 'tel',
+                path: '+91${ctrl.shopInfo!.shop!.contactNo}',
+              );
+              await launchUrl(launchUri);
+            },
           ),
         ],
       ),
