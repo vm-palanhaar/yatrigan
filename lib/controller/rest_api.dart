@@ -18,46 +18,16 @@ enum UserApiUri {
   final String uri;
 }
 
-//---BusinessApp---
-const String baseUrlApiBusAppV1 = '$baseUrlApi/idukaan/business/v1';
-
-enum BusinessApiUri {
-  //PROD
-  orgTypes(uri: '$baseUrlApiBusAppV1/org/type'),
-  addOrg(uri: '$baseUrlApiBusAppV1/org'),
-  orgList(uri: '$baseUrlApiBusAppV1/org'),
-  orgInfo(uri: '$baseUrlApiBusAppV1/org/<orgId>'),
-  addOrgEmp(uri: '$baseUrlApiBusAppV1/org/<orgId>/emp'),
-  orgEmpList(uri: '$baseUrlApiBusAppV1/org/<orgId>/emp'),
-  deleteOrgEmp(uri: '$baseUrlApiBusAppV1/org/<orgId>/emp/<orgEmpId>'),
-  patchOrgEmp(uri: '$baseUrlApiBusAppV1/org/<orgId>/emp/<orgEmpId>'),
-  //DEV
-  doNotUse(uri: '');
-
-  const BusinessApiUri({
-    required this.uri,
-  });
-
-  final String uri;
-}
-
 //---IndianRailwaysApp---
 const String baseUrlApiIrV1 = '$baseUrlApi/ir/v1';
-const String baseUrlApiIrAppV1 = '$baseUrlApi/idukaan/ir/v1';
+const String baseUrlApiIrAppV1 = '$baseUrlApi/yatrigan/ir/v1';
 
 enum IrApiUri {
   //PROD
   stations(uri: '$baseUrlApiIrV1/stations'),
-  addShop(uri: '$baseUrlApiIrAppV1/org/<orgId>/shop'),
-  orgShops(uri: '$baseUrlApiIrAppV1/org/<orgId>/shop'),
-  shopInfo(uri: '$baseUrlApiIrAppV1/org/<orgId>/shop/<shopId>'),
-  patchShop(uri: '$baseUrlApiIrAppV1/org/<orgId>/shop/<shopId>'),
-  shopEmps(uri: '$baseUrlApiIrAppV1/org/<orgId>/shop/<shopId>/emp'),
-  addShopEmp(uri: '$baseUrlApiIrAppV1/org/<orgId>/shop/<shopId>/emp'),
-  patchShopEmp(
-      uri: '$baseUrlApiIrAppV1/org/<orgId>/shop/<shopId>/emp/<empId>'),
-  deleteShopEmp(
-      uri: '$baseUrlApiIrAppV1/org/<orgId>/shop/<shopId>/emp/<empId>'),
+  stationShopList(uri: '$baseUrlApiIrAppV1/station/<code>/stalls'),
+  stationShopInfo(
+      uri: '$baseUrlApiIrAppV1/station/<code>/stalls/<id>/info'),
   //DEV
   doNotUse(uri: '');
 

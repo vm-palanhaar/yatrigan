@@ -92,13 +92,13 @@ class _UserLoginScreenState extends State<UserLoginScreen> {
                     ),
                     const Divider(),
                     TextFormFieldWidget(
-                      prefixIcon: UserIcons.username.icon,
+                      prefixWidget: Icon(UserIcons.username.icon),
                       keyboardType: TextInputType.name,
                       labelText: 'Username',
                       onFieldSubmitted: ctrl.userLoginReq.setUsername,
                     ),
                     TextFormFieldWidget(
-                      prefixIcon: UserIcons.pwd.icon,
+                      prefixWidget: Icon(UserIcons.pwd.icon),
                       keyboardType: TextInputType.visiblePassword,
                       obscureText: true,
                       labelText: 'Password',

@@ -4,6 +4,7 @@ AppBar appBar({
   required BuildContext context,
   required String title,
   List<Widget>? actions,
+  PreferredSizeWidget? bottom,
 }) {
   return AppBar(
     title: Text(
@@ -14,5 +15,6 @@ AppBar appBar({
       ),
     ),
     actions: actions,
+    bottom: bottom,
   );
 }

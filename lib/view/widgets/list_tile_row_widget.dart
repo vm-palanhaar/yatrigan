@@ -4,13 +4,13 @@ import 'package:yatrigan/view/widgets/text_widget.dart';
 class ListTileRowWidget extends StatelessWidget {
   final String title;
   final bool? titleBold;
-  final IconData? icon;
+  final Widget trailing;
   final Function? onTap;
   const ListTileRowWidget({
     super.key,
     required this.title,
+    required this.trailing,
     this.titleBold,
-    this.icon,
     this.onTap,
   });
 
@@ -37,7 +37,7 @@ class ListTileRowWidget extends StatelessWidget {
                 fontWeight: titleBold == null ? null : FontWeight.bold,
               ),
               const Spacer(),
-              Icon(icon),
+              trailing,
             ],
           ),
         ),

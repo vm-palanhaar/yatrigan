@@ -3,7 +3,7 @@ import 'package:yatrigan/view/util/margins.dart';
 
 class AcTextFormFieldWidget extends StatelessWidget {
   final List<String> list;
-  final IconData icon;
+  final Widget? prefixWidget;
   final String? id;
   final String? labelText;
   final Function onSelect;
@@ -11,7 +11,7 @@ class AcTextFormFieldWidget extends StatelessWidget {
   const AcTextFormFieldWidget({
     Key? key,
     required this.list,
-    required this.icon,
+    this.prefixWidget,
     this.id,
     this.labelText,
     required this.onSelect,
@@ -40,14 +40,14 @@ class AcTextFormFieldWidget extends StatelessWidget {
             focusNode: focusNode,
             onEditingComplete: onEditingComplete,
             decoration: InputDecoration(
-              prefixIcon: Icon(icon),
+              prefixIcon: prefixWidget,
               labelText: labelText,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
               ),
               isDense: true,
               contentPadding: EdgeInsets.symmetric(
-                vertical: MediaQuery.of(context).size.height * 0.02,
+                vertical: MediaQuery.of(context).size.height * 0.01,
               ),
             ),
             validator: (value) {
