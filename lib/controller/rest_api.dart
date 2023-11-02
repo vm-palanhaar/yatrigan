@@ -25,6 +25,7 @@ const String baseUrlApiIrAppV1 = '$baseUrlApi/yatrigan/ir/v1';
 enum IrApiUri {
   //PROD
   stations(uri: '$baseUrlApiIrV1/stations'),
+  trains(uri: '$baseUrlApiIrV1/trainList'),
   stationShopList(uri: '$baseUrlApiIrAppV1/station/<code>/stalls'),
   stationShopInfo(
       uri: '$baseUrlApiIrAppV1/station/<code>/stalls/<id>/info'),

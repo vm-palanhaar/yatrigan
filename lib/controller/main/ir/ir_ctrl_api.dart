@@ -5,15 +5,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:yatrigan/controller/handle_errors_api.dart';
 import 'package:yatrigan/controller/rest_api.dart';
-import 'package:yatrigan/model/main/ir/ir_station_list_mdl.dart';
+import 'package:yatrigan/model/main/ir/station/ir_station_list_mdl.dart';
 import 'package:yatrigan/model/main/ir/station/shops/info/ir_shop_info_res_mdl.dart';
 import 'package:yatrigan/model/main/ir/station/shops/list/ir_shop_list_obj_res_mdl.dart';
 import 'package:yatrigan/model/main/ir/station/shops/list/ir_shops_list_res_mdl.dart';
+import 'package:yatrigan/model/main/ir/train/ir_train_list_res_mdl.dart';
 
 class IrCtrlApi extends HandleErrorsApi {
-  late String _token;
-  void setToken(String token) => _token = token;
-
   Future<IrStationListMdl?> getStationListApi({
     required BuildContext context,
     required bool showError,
@@ -80,6 +78,26 @@ class IrCtrlApi extends HandleErrorsApi {
         res = IrShopInfoResMdl.success(json);
       } else if (response.statusCode == 400) {
         res = IrShopInfoResMdl.fail(json);
+      }
+      //TODO: Handle errors if not response not serialized
+    }
+    return res;
+  }
+
+  Future<IrTrainListResMdl?> getTrainListApi({
+    required BuildContext context,
+    required bool showError,
+  }) async {
+    super.context = context;
+    super.showError = showError;
+    IrTrainListResMdl? res;
+    if (await checkInternetConnectivity()) {
+      var response = await http.get(
+        Uri.parse(IrApiUri.trains.uri),
+      );
+      var json = jsonDecode(response.body);
+      if (response.statusCode == 200) {
+        res = IrTrainListResMdl.fromJson(json);
       }
       //TODO: Handle errors if not response not serialized
     }

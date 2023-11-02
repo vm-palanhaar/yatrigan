@@ -44,4 +44,16 @@ class IrCtrl extends IrCtrlMdl {
       );
     }
   }
+
+  Future<void> getTrainListApi({
+    required BuildContext context,
+  }) async {
+    if (trainList == null || trainList!.train.isEmpty) {
+      trainList = await _api.getTrainListApi(
+        context: context,
+        showError: true,
+      );
+      notifyListeners();
+    }
+  }
 }
