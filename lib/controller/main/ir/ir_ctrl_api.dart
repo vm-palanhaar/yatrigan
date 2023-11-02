@@ -6,6 +6,8 @@ import 'package:http/http.dart' as http;
 import 'package:yatrigan/controller/handle_errors_api.dart';
 import 'package:yatrigan/controller/rest_api.dart';
 import 'package:yatrigan/model/main/ir/ir_station_list_mdl.dart';
+import 'package:yatrigan/model/main/ir/station/shops/info/ir_shop_info_res_mdl.dart';
+import 'package:yatrigan/model/main/ir/station/shops/list/ir_shop_list_obj_res_mdl.dart';
 import 'package:yatrigan/model/main/ir/station/shops/list/ir_shops_list_res_mdl.dart';
 
 class IrCtrlApi extends HandleErrorsApi {
@@ -32,14 +34,14 @@ class IrCtrlApi extends HandleErrorsApi {
     return res;
   }
 
-  Future<IrShopsListResMdl?> getShopListApi({
+  Future<IrShopListResMdl?> getShopListApi({
     required BuildContext context,
     required bool showError,
     required String stationCode,
   }) async {
     super.context = context;
     super.showError = showError;
-    IrShopsListResMdl? res;
+    IrShopListResMdl? res;
     if (await checkInternetConnectivity()) {
       String uri = IrApiUri.stationShopList.uri;
       uri = uri.replaceAll("<code>", stationCode);
@@ -48,9 +50,36 @@ class IrCtrlApi extends HandleErrorsApi {
       );
       var json = jsonDecode(response.body);
       if (response.statusCode == 200) {
-        res = IrShopsListResMdl.success(json);
+        res = IrShopListResMdl.success(json);
       } else if (response.statusCode == 400) {
-        res = IrShopsListResMdl.fail(json);
+        res = IrShopListResMdl.fail(json);
+      }
+      //TODO: Handle errors if not response not serialized
+    }
+    return res;
+  }
+
+  Future<IrShopInfoResMdl?> getShopInfoApi({
+    required BuildContext context,
+    required bool showError,
+    required String stationCode,
+    required IrShopListObjResMdl shop,
+  }) async {
+    super.context = context;
+    super.showError = showError;
+    IrShopInfoResMdl? res;
+    if (await checkInternetConnectivity()) {
+      String uri = IrApiUri.stationShopInfo.uri;
+      uri = uri.replaceAll("<code>", stationCode);
+      uri = uri.replaceAll("<id>", shop.id);
+      var response = await http.get(
+        Uri.parse(uri),
+      );
+      var json = jsonDecode(response.body);
+      if (response.statusCode == 200) {
+        res = IrShopInfoResMdl.success(json);
+      } else if (response.statusCode == 400) {
+        res = IrShopInfoResMdl.fail(json);
       }
       //TODO: Handle errors if not response not serialized
     }

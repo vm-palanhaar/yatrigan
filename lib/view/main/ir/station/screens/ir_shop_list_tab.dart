@@ -25,7 +25,7 @@ class _IrShopListTabState extends State<IrShopListTab> {
   }
 
   Future<void> getStationShopList() async {
-    await ctrl.getStationShopListApi(context: context);
+    await ctrl.getShopListApi(context: context);
     setState(() {});
   }
 

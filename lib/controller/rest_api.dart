@@ -26,6 +26,8 @@ enum IrApiUri {
   //PROD
   stations(uri: '$baseUrlApiIrV1/stations'),
   stationShopList(uri: '$baseUrlApiIrAppV1/station/<code>/stalls'),
+  stationShopInfo(
+      uri: '$baseUrlApiIrAppV1/station/<code>/stalls/<id>/info'),
   //DEV
   doNotUse(uri: '');
 

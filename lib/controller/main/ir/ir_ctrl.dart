@@ -18,7 +18,7 @@ class IrCtrl extends IrCtrlMdl {
     }
   }
 
-  Future<void> getStationShopListApi({
+  Future<void> getShopListApi({
     required BuildContext context,
   }) async {
     if (stationCode.isNotEmpty) {
@@ -29,6 +29,19 @@ class IrCtrl extends IrCtrlMdl {
         stationCode: stationCode,
       );
       notifyListeners();
+    }
+  }
+
+  Future<void> getShopInfoApi({
+    required BuildContext context,
+  }) async {
+    if (shopInfo == null || shopInfo!.shopId != shop!.id) {
+      shopInfo = await _api.getShopInfoApi(
+        context: context,
+        showError: true,
+        stationCode: stationCode,
+        shop: shop!,
+      );
     }
   }
 }
