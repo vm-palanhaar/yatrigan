@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:yatrigan/controller/main/ir/ir_ctrl.dart';
 import 'package:yatrigan/view/main/ir/train/screens/ir_kyt_screen.dart';
 import 'package:yatrigan/view/widgets/fields/ac_textformfield_widget.dart';
+import 'package:yatrigan/view/widgets/loading_widget.dart';
 
 class IrTrainSearchWidget extends StatefulWidget {
   final Function onSubmitted;
@@ -28,21 +29,24 @@ class _IrTrainSearchWidgetState extends State<IrTrainSearchWidget> {
   }
 
   Future<void> getTrainList() async {
-    await ctrl.getTrainListApi(context: context);
+    await ctrl.getSearchTrainList(context: context);
     setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    return AcTextFormFieldWidget(
-      prefixWidget: const Icon(Icons.train_outlined),
-      labelText: widget.title,
-      list: ctrl.trainList!.trains,
-      onSelect: (String selection) async {
-        ctrl.trainNo = selection.split('-')[0].trim();
-        ctrl.trainName = selection.split('-')[1].trim();
-        Navigator.pushNamed(context, IrKytScreen.id);
-      },
-    );
+    if (ctrl.trainList != null) {
+      return AcTextFormFieldWidget(
+        prefixWidget: const Icon(Icons.train_outlined),
+        labelText: widget.title,
+        list: ctrl.trainList!.trains,
+        onSelect: (String selection) async {
+          ctrl.trainNo = selection.split('-')[0].trim();
+          ctrl.trainName = selection.split('-')[1].trim();
+          Navigator.pushNamed(context, IrKytScreen.id);
+        },
+      );
+    }
+    return const LoadingWidget();
   }
 }

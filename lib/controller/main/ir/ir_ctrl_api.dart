@@ -9,11 +9,11 @@ import 'package:yatrigan/model/main/ir/station/ir_station_list_mdl.dart';
 import 'package:yatrigan/model/main/ir/station/shops/info/ir_shop_info_res_mdl.dart';
 import 'package:yatrigan/model/main/ir/station/shops/list/ir_shop_list_obj_res_mdl.dart';
 import 'package:yatrigan/model/main/ir/station/shops/list/ir_shops_list_res_mdl.dart';
-import 'package:yatrigan/model/main/ir/train/ir_train_list_res_mdl.dart';
+import 'package:yatrigan/model/main/ir/train/ir_train_list_mdl.dart';
 import 'package:yatrigan/model/main/ir/train/schedule/ir_train_shdl_res_mdl.dart';
 
 class IrCtrlApi extends HandleErrorsApi {
-  Future<IrStationListMdl?> getStationListApi({
+  Future<IrStationListMdl?> getSearchStationListApi({
     required BuildContext context,
     required bool showError,
   }) async {
@@ -85,20 +85,20 @@ class IrCtrlApi extends HandleErrorsApi {
     return res;
   }
 
-  Future<IrTrainListResMdl?> getTrainListApi({
+  Future<IrTrainListMdl?> getSearchTrainListApi({
     required BuildContext context,
     required bool showError,
   }) async {
     super.context = context;
     super.showError = showError;
-    IrTrainListResMdl? res;
+    IrTrainListMdl? res;
     if (await checkInternetConnectivity()) {
       var response = await http.get(
         Uri.parse(IrApiUri.trains.uri),
       );
       var json = jsonDecode(response.body);
       if (response.statusCode == 200) {
-        res = IrTrainListResMdl.fromJson(json);
+        res = IrTrainListMdl.fromJson(json);
       }
       //TODO: Handle errors if not response not serialized
     }

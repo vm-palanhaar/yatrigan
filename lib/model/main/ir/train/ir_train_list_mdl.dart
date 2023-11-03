@@ -1,14 +1,14 @@
-class IrTrainListResMdl {
+class IrTrainListMdl {
   final int lenSt;
   final List<String> trains;
 
-  IrTrainListResMdl({
+  IrTrainListMdl({
     required this.lenSt,
     required this.trains,
   });
 
-  factory IrTrainListResMdl.fromJson(Map<String, dynamic> json) {
-    return IrTrainListResMdl(
+  factory IrTrainListMdl.fromJson(Map<String, dynamic> json) {
+    return IrTrainListMdl(
       lenSt: json['total'] as int,
       trains: List<String>.from(json['trains'] as List),
     );

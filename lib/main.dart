@@ -5,7 +5,7 @@ import 'package:yatrigan/view/init/init_view.dart';
 import 'package:yatrigan/view/init/splash_screen.dart';
 import 'package:yatrigan/view/main/home_screen_view.dart';
 
-void main() {
+void main() async {
   runApp(const Yatrigan());
 }
 

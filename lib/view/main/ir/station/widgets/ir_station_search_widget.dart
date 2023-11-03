@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:yatrigan/controller/main/ir/ir_ctrl.dart';
 import 'package:yatrigan/view/main/ir/station/screens/ir_kys_screen.dart';
 import 'package:yatrigan/view/widgets/fields/ac_textformfield_widget.dart';
+import 'package:yatrigan/view/widgets/loading_widget.dart';
 
 class IrStationSearchWidget extends StatefulWidget {
   final Function onSubmitted;
@@ -23,26 +24,29 @@ class _IrStationSearchWidgetState extends State<IrStationSearchWidget> {
   @override
   void initState() {
     ctrl = Provider.of<IrCtrl>(context, listen: false);
-    getStationList();
+    getSearchStationList();
     super.initState();
   }
 
-  Future<void> getStationList() async {
-    await ctrl.getStationListApi(context: context);
+  Future<void> getSearchStationList() async {
+    await ctrl.getSearchStationList(context: context);
     setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    return AcTextFormFieldWidget(
-      prefixWidget: const Icon(Icons.place_outlined),
-      labelText: widget.title,
-      list: ctrl.stationList!.stations,
-      onSelect: (String selection) async {
-        ctrl.stationName = selection.split('-')[0].trim();
-        ctrl.stationCode = selection.split('-')[1].trim();
-        Navigator.pushNamed(context, IrKysScreen.id);
-      },
-    );
+    if (ctrl.stationList != null) {
+      return AcTextFormFieldWidget(
+        prefixWidget: const Icon(Icons.place_outlined),
+        labelText: widget.title,
+        list: ctrl.stationList!.stations,
+        onSelect: (String selection) async {
+          ctrl.stationName = selection.split('-')[0].trim();
+          ctrl.stationCode = selection.split('-')[1].trim();
+          Navigator.pushNamed(context, IrKysScreen.id);
+        },
+      );
+    }
+    return const LoadingWidget();
   }
 }
