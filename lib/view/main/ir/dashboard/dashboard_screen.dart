@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yatrigan/view/main/ir/dashboard/widgets/search_opt_widget.dart';
+import 'package:yatrigan/view/main/ir/wallet/screens/ir_crt_jrny_screen.dart';
 import 'package:yatrigan/view/util/app_bar.dart';
 import 'package:yatrigan/view/util/margins.dart';
 import 'package:yatrigan/view/widgets/list_tile_row_widget.dart';
@@ -27,7 +28,9 @@ class DashboardScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       ListTile(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushNamed(context, IrCrtJrnyScreen.id);
+                        },
                         title: const Text('The journey you are currently on\n'),
                         subtitle: const Column(
                           crossAxisAlignment: CrossAxisAlignment.start,

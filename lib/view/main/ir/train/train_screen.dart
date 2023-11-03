@@ -33,7 +33,7 @@ class TrainScreen extends StatelessWidget {
                       ),
                       IrTrainSearchWidget(
                         onSubmitted: () {},
-                        title: 'Know Your Train - KYT',
+                        title: 'Train Number/Name',
                       ),
                     ],
                   ),

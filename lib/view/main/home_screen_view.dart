@@ -8,6 +8,7 @@ import 'package:yatrigan/view/main/ir/station/screens/ir_kys_screen.dart';
 import 'package:yatrigan/view/main/ir/station/screens/shop/ir_shop_screen.dart';
 import 'package:yatrigan/view/main/ir/train/screens/ir_kyt_screen.dart';
 import 'package:yatrigan/view/main/ir/train/train_screen.dart';
+import 'package:yatrigan/view/main/ir/wallet/screens/ir_crt_jrny_screen.dart';
 import 'package:yatrigan/view/main/ir/wallet/wallet_screen.dart';
 import 'package:yatrigan/view/main/util/bottom_nav_bar_util.dart';
 import 'package:yatrigan/view/main/util/internet_screen.dart';
@@ -36,6 +37,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
           IrKysScreen.id: (_) => const IrKysScreen(),
           IrShopScreen.id: (_) => const IrShopScreen(),
           IrKytScreen.id: (_) => const IrKytScreen(),
+          IrCrtJrnyScreen.id: (_) => const IrCrtJrnyScreen(),
           // user login/logout
           InitView.id: (_) => const InitView(),
           // utility Screen
