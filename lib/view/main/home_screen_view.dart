@@ -4,8 +4,9 @@ import 'package:yatrigan/controller/main/ir/ir_ctrl.dart';
 import 'package:yatrigan/view/init/init_view.dart';
 import 'package:yatrigan/view/main/ir/dashboard/dashboard_screen.dart';
 import 'package:yatrigan/view/main/ir/help/help_screen.dart';
-import 'package:yatrigan/view/main/ir/station/screens/ir_station_screen.dart';
+import 'package:yatrigan/view/main/ir/station/screens/ir_kys_screen.dart';
 import 'package:yatrigan/view/main/ir/station/screens/shop/ir_shop_screen.dart';
+import 'package:yatrigan/view/main/ir/train/screens/ir_kyt_screen.dart';
 import 'package:yatrigan/view/main/ir/train/train_screen.dart';
 import 'package:yatrigan/view/main/ir/wallet/wallet_screen.dart';
 import 'package:yatrigan/view/main/util/bottom_nav_bar_util.dart';
@@ -32,8 +33,9 @@ class _HomeScreenViewState extends State<HomeScreenView> {
         ),
         routes: {
           // indian railways
-          IrStationScreen.id: (_) => const IrStationScreen(),
+          IrKysScreen.id: (_) => const IrKysScreen(),
           IrShopScreen.id: (_) => const IrShopScreen(),
+          IrKytScreen.id: (_) => const IrKytScreen(),
           // user login/logout
           InitView.id: (_) => const InitView(),
           // utility Screen

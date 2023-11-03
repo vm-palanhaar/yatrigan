@@ -56,4 +56,17 @@ class IrCtrl extends IrCtrlMdl {
       notifyListeners();
     }
   }
+
+  Future<void> getTrainShdlApi({
+    required BuildContext context,
+  }) async {
+    if (trainShdl == null || trainShdl!.trainNo != trainNo) {
+      trainShdl = await _api.getTrainShdlApi(
+        context: context,
+        showError: true,
+        trainNo: trainNo,
+      );
+      notifyListeners();
+    }
+  }
 }

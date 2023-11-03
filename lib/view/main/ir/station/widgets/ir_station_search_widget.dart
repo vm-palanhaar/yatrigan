@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:yatrigan/controller/main/ir/ir_ctrl.dart';
-import 'package:yatrigan/view/main/ir/station/screens/ir_station_screen.dart';
+import 'package:yatrigan/view/main/ir/station/screens/ir_kys_screen.dart';
 import 'package:yatrigan/view/widgets/fields/ac_textformfield_widget.dart';
 
 class IrStationSearchWidget extends StatefulWidget {
@@ -41,7 +41,7 @@ class _IrStationSearchWidgetState extends State<IrStationSearchWidget> {
       onSelect: (String selection) async {
         ctrl.stationName = selection.split('-')[0].trim();
         ctrl.stationCode = selection.split('-')[1].trim();
-        Navigator.pushNamed(context, IrStationScreen.id);
+        Navigator.pushNamed(context, IrKysScreen.id);
       },
     );
   }

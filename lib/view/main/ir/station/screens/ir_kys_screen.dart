@@ -4,9 +4,9 @@ import 'package:yatrigan/controller/main/ir/ir_ctrl.dart';
 import 'package:yatrigan/view/main/ir/station/screens/ir_shop_list_tab.dart';
 import 'package:yatrigan/view/util/app_bar.dart';
 
-class IrStationScreen extends StatelessWidget {
-  const IrStationScreen({super.key});
-  static String id = '/yatrigan/ir/station/code';
+class IrKysScreen extends StatelessWidget {
+  const IrKysScreen({super.key});
+  static String id = '/yatrigan/ir/station/code/kys';
 
   @override
   Widget build(BuildContext context) {
