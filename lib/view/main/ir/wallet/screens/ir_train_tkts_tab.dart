@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:yatrigan/view/widgets/ctext_error_widget.dart';
 
-class IrTrainTktStatusTab extends StatefulWidget {
-  const IrTrainTktStatusTab({super.key});
+class IrTrainTktsTab extends StatefulWidget {
+  const IrTrainTktsTab({super.key});
 
   @override
-  State<IrTrainTktStatusTab> createState() => _IrTrainTktStatusTabState();
+  State<IrTrainTktsTab> createState() => _IrTrainTktsTabState();
 }
 
-class _IrTrainTktStatusTabState extends State<IrTrainTktStatusTab> {
+class _IrTrainTktsTabState extends State<IrTrainTktsTab> {
   @override
   Widget build(BuildContext context) {
     return const CTextErrorWidget(
