@@ -1,49 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:yatrigan/controller/main/ir/ir_ctrl.dart';
-import 'package:yatrigan/view/main/ir/station/screens/ir_kys_screen.dart';
+import 'package:yatrigan/view/main/ir/train/screens/ir_kyt_screen.dart';
 import 'package:yatrigan/view/widgets/fields/ac_textformfield_widget.dart';
 import 'package:yatrigan/view/widgets/loading_widget.dart';
 
-class IrStationSearchWidget extends StatefulWidget {
+class IrTrainSearchWidget extends StatefulWidget {
   final Function onSubmitted;
   final String title;
-  const IrStationSearchWidget({
+  const IrTrainSearchWidget({
     super.key,
     required this.onSubmitted,
     required this.title,
   });
 
   @override
-  State<IrStationSearchWidget> createState() => _IrStationSearchWidgetState();
+  State<IrTrainSearchWidget> createState() => _IrTrainSearchWidgetState();
 }
 
-class _IrStationSearchWidgetState extends State<IrStationSearchWidget> {
+class _IrTrainSearchWidgetState extends State<IrTrainSearchWidget> {
   late IrCtrl ctrl;
 
   @override
   void initState() {
     ctrl = Provider.of<IrCtrl>(context, listen: false);
-    getSearchStationList();
+    getTrainList();
     super.initState();
   }
 
-  Future<void> getSearchStationList() async {
-    await ctrl.getSearchStationList(context: context);
+  Future<void> getTrainList() async {
+    await ctrl.getSearchTrainList(context: context);
     setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    if (ctrl.stationList != null) {
+    if (ctrl.trainList != null) {
       return AcTextFormFieldWidget(
-        prefixWidget: const Icon(Icons.place_outlined),
+        prefixWidget: const Icon(Icons.train_outlined),
         labelText: widget.title,
-        list: ctrl.stationList!.stations,
+        list: ctrl.trainList!.trains,
         onSelect: (String selection) async {
-          ctrl.stationName = selection.split('-')[0].trim();
-          ctrl.stationCode = selection.split('-')[1].trim();
-          Navigator.pushNamed(context, IrKysScreen.id);
+          ctrl.trainNo = selection.split('-')[0].trim();
+          ctrl.trainName = selection.split('-')[1].trim();
+          Navigator.pushNamed(context, IrKytScreen.id);
         },
       );
     }

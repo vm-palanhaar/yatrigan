@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:yatrigan/controller/main/ir/ir_ctrl.dart';
 import 'package:yatrigan/view/main/ir/station/widgets/ir_station_search_widget.dart';
-import 'package:yatrigan/view/widgets/fields/ac_textformfield_widget.dart';
+import 'package:yatrigan/view/main/ir/train/widgets/ir_trains_search_widget.dart';
 import 'package:yatrigan/view/widgets/fields/textformfield_widget.dart';
 import 'package:yatrigan/view/widgets/text_widget.dart';
 
@@ -12,6 +14,14 @@ class SearchOptWidget extends StatefulWidget {
 }
 
 class _SearchOptWidgetState extends State<SearchOptWidget> {
+  late IrCtrl ctrl;
+  @override
+  void initState() {
+    ctrl = Provider.of<IrCtrl>(context, listen: false);
+    ctrl.initDb();
+    super.initState();
+  }
+
   /*
   0 - PNR Enquiry
   1 - Know Your Train (KYT)
@@ -59,14 +69,9 @@ class _SearchOptWidgetState extends State<SearchOptWidget> {
           onFieldSubmitted: () {},
         );
       case 1:
-        return AcTextFormFieldWidget(
-          prefixWidget: const Icon(Icons.train_outlined),
-          labelText: 'Know Your Train - KYT',
-          list: const [
-            'NDLS',
-            'CSMT'
-          ], //TODO: Integrate railway stations to this widget
-          onSelect: (String selection) async {},
+        return IrTrainSearchWidget(
+          onSubmitted: () {},
+          title: 'Know Your Train - KYT',
         );
       case 2:
         return IrStationSearchWidget(
