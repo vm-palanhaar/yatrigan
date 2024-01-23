@@ -43,7 +43,9 @@ class AcTextFormFieldWidget extends StatelessWidget {
               prefixIcon: prefixWidget,
               labelText: labelText,
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10.0),
+                borderRadius: BorderRadius.circular(
+                  MediaQuery.of(context).size.height * 0.01,
+                ),
               ),
               isDense: true,
               contentPadding: EdgeInsets.symmetric(

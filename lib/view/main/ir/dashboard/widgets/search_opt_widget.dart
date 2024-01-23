@@ -65,18 +65,18 @@ class _SearchOptWidgetState extends State<SearchOptWidget> {
         return TextFormFieldWidget(
           prefixWidget: const Icon(Icons.sync),
           keyboardType: TextInputType.number,
-          labelText: 'PNR Enquiry',
+          labelText: 'PNR Number',
           onFieldSubmitted: () {},
         );
       case 1:
         return IrTrainSearchWidget(
           onSubmitted: () {},
-          title: 'Know Your Train - KYT',
+          title: 'Train Number/Name',
         );
       case 2:
         return IrStationSearchWidget(
           onSubmitted: () {},
-          title: 'Know Your Station - KYS',
+          title: 'Station Code/Name',
         );
       default:
         return Container();
@@ -86,7 +86,7 @@ class _SearchOptWidgetState extends State<SearchOptWidget> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.17,
+      height: MediaQuery.of(context).size.height * 0.18,
       child: Column(
         children: [
           Row(

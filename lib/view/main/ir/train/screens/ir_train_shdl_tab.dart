@@ -46,7 +46,7 @@ class _IrTrainShdlTabState extends State<IrTrainShdlTab> {
                     children: [
                       ListTileRowWidget(
                         title: 'Run on Days',
-                        trailing: Text(ctrl.trainShdl!.shdl!.runStatus),
+                        trailing: Text(ctrl.trainShdl!.shdl!.daysRun),
                         titleBold: true,
                       ),
                       ListTileRowWidget(

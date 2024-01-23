@@ -14,14 +14,14 @@ class IrTrainShdlResMdl {
 
   factory IrTrainShdlResMdl.success(Map<String, dynamic> json) {
     return IrTrainShdlResMdl(
-      trainNo: json["train"] as String,
-      shdl: IrTrainShdlMdl.fromJson(json['schedule']),
+      trainNo: json["trainNo"] as String,
+      shdl: IrTrainShdlMdl.fromJson(json['trainSchedule']),
     );
   }
 
   factory IrTrainShdlResMdl.fail(Map<String, dynamic> json) {
     return IrTrainShdlResMdl(
-      trainNo: json["train"] as String,
+      trainNo: json["trainNo"] as String,
       error: ErrorMdl.fromJson(json['error']),
     );
   }

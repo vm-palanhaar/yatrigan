@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yatrigan/view/util/app_bar.dart';
 import 'package:yatrigan/view/util/margins.dart';
-import 'package:yatrigan/view/widgets/ctext_error_widget.dart';
+import 'package:yatrigan/view/widgets/fields/textformfield_widget.dart';
 
 class WalletScreen extends StatelessWidget {
   const WalletScreen({super.key});
@@ -14,18 +14,30 @@ class WalletScreen extends StatelessWidget {
         context: context,
         title: 'Wallet',
       ),
-      body: Container(
-        margin: screenMargin(context),
-        child:  const Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CTextErrorWidget(
-              text: 'PNR Status',
-            ),
-            CTextErrorWidget(
-              text: 'List train booked tickets, and associated services booked',
-            ),
-          ],
+      body: SingleChildScrollView(
+        child: Container(
+          margin: screenMargin(context),
+          child:   Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Card(
+                child: Column(
+                  children: [
+                    ListTile(
+                      title: const Text('PNR Enquiry'),
+                      subtitle: TextFormFieldWidget(
+                        prefixWidget: const Icon(Icons.sync),
+                        keyboardType: TextInputType.number,
+                        labelText: 'PNR Number',
+                        onFieldSubmitted: () {},
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              
+            ],
+          ),
         ),
       )
     );

@@ -33,8 +33,8 @@ class TextFormFieldWidget extends StatelessWidget {
         keyboardType: keyboardType,
         validator: (value) {
           if (validator != null) {
-            var check =  validator!(value);
-            if (check != null){
+            var check = validator!(value);
+            if (check != null) {
               return check;
             }
           }
@@ -53,7 +53,9 @@ class TextFormFieldWidget extends StatelessWidget {
             vertical: MediaQuery.of(context).size.height * 0.01,
           ),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10.0),
+            borderRadius: BorderRadius.circular(
+              MediaQuery.of(context).size.height * 0.01,
+            ),
           ),
         ),
       ),

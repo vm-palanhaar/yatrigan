@@ -20,23 +20,17 @@ class TrainScreen extends StatelessWidget {
           child: Column(
             children: [
               Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      ListTile(
-                        leading: Image.asset(
-                          'assets/images/ir/vande_bharat_white.png',
-                          height: MediaQuery.of(context).size.height * 0.04,
-                        ),
-                        title: const Text('Know Your Train (KYT)'),
-                      ),
-                      IrTrainSearchWidget(
+                child: Column(
+                  children: [
+                    ListTile(
+                      title: const Text('Know Your Train (KYT)'),
+                      subtitle: IrTrainSearchWidget(
                         onSubmitted: () {},
                         title: 'Train Number/Name',
                       ),
-                    ],
-                  ),
+                    ),
+
+                  ],
                 ),
               ),
             ],
