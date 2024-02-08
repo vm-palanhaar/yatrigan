@@ -17,15 +17,14 @@ class TrainScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Container(
           margin: screenMargin(context),
-          child: Column(
+          child: const Column(
             children: [
               Card(
                 child: Column(
                   children: [
                     ListTile(
-                      title: const Text('Know Your Train (KYT)'),
+                      title: Text('Know Your Train (KYT)'),
                       subtitle: IrTrainSearchWidget(
-                        onSubmitted: () {},
                         title: 'Train Number/Name',
                       ),
                     ),

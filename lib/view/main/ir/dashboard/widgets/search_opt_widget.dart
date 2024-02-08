@@ -69,13 +69,11 @@ class _SearchOptWidgetState extends State<SearchOptWidget> {
           onFieldSubmitted: () {},
         );
       case 1:
-        return IrTrainSearchWidget(
-          onSubmitted: () {},
+        return const IrTrainSearchWidget(
           title: 'Train Number/Name',
         );
       case 2:
-        return IrStationSearchWidget(
-          onSubmitted: () {},
+        return const IrStationSearchWidget(
           title: 'Station Code/Name',
         );
       default:

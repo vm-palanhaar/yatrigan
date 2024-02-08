@@ -6,11 +6,9 @@ import 'package:yatrigan/view/widgets/fields/ac_textformfield_widget.dart';
 import 'package:yatrigan/view/widgets/loading_widget.dart';
 
 class IrStationSearchWidget extends StatefulWidget {
-  final Function onSubmitted;
   final String title;
   const IrStationSearchWidget({
     super.key,
-    required this.onSubmitted,
     required this.title,
   });
 
