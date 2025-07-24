@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:yatrigan/controller/auth/auth_ctrl.dart';
 import 'package:yatrigan/view/main/util/internet_screen.dart';
-import 'package:provider/provider.dart';
 
 class HandleErrorsApi {
   BuildContext? context;
